@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import './OutputSteps.css';
 import { v4 as uuidv4 } from 'uuid';
 
-function OutputSteps({stepsList, deleteStep}) {
+function OutputSteps({ stepsList, deleteStep }) {
+    stepsList.sort(function (a, b) {
+        if (a.date > b.date) {
+          return -1;
+        }
+        if (a.date < b.date) {
+          return 1;
+        }
+      });
     const generateUnicKey = () => {
         return uuidv4();
     };
